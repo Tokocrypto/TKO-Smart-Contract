@@ -59,9 +59,10 @@ contract BEP20 is Context, IBEP20, Ownable {
         _name = name;
         _symbol = symbol;
         _decimals = 18;
-        uint256 multiplier = 10;
+        // uint256 multiplier = 10;
 
-        _limit = limit * (multiplier ** _decimals);
+        // _limit = limit * (multiplier ** _decimals);
+        _limit = limit;
     }
 
     /**

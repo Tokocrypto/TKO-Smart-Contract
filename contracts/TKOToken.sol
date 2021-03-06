@@ -6,7 +6,7 @@ import "./libs/token/BEP20/BEP20.sol";
 
 // BEP20Token with Governance.
 // ('Token Name', 'Token Symbol', 'Token supply limit')
-contract TKOToken is BEP20('TKO Test', 'TKO-T', 500000000) {
+contract TKOToken is BEP20('TKO Test', 'TKO-T', 500000000000000000000000000) {
     /// @notice Creates `_amount` token to `_to`. Must only be called by the owner.
     function mint(address _to, uint256 _amount) public onlyOwner {
 
