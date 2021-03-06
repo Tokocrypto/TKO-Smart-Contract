@@ -41,7 +41,7 @@ contract BEP20 is Context, IBEP20, Ownable {
     mapping(address => mapping(address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
-    uint256 private _limit = 500000000;
+    uint256 private _limit;
     string private _name;
     string private _symbol;
     uint8 private _decimals;
@@ -55,13 +55,13 @@ contract BEP20 is Context, IBEP20, Ownable {
      * All three of these values are immutable: they can only be set once during
      * construction.
      */
-    constructor(string memory name, string memory symbol) public {
+    constructor(string memory name, string memory symbol, uint256 limit) public {
         _name = name;
         _symbol = symbol;
         _decimals = 18;
         uint256 multiplier = 10;
 
-        _limit = _limit * (multiplier ** _decimals);
+        _limit = limit * (multiplier ** _decimals);
     }
 
     /**
