@@ -25,8 +25,8 @@ contract('TKOToken', function(accounts) {
     })
 
     it('transfer', async () => {
-        var result = await contract_instance.transfer(alice, 1000);
-        assert(true, result);
+        await contract_instance.transfer(alice, 1000);
+        assert.equal((await contract_instance.balanceOf(alice)).toString(), '1000');
     })
 
     it("Total supply <= 500000000000000000000000000", async function(){
@@ -34,6 +34,7 @@ contract('TKOToken', function(accounts) {
             var owner = await contract_instance.owner.call();
             await contract_instance.mint(owner, '700000000000000000000000000');
         } catch (error) {
+            console.log(error)
             assert(true, error);
         }
     });
