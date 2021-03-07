@@ -38,6 +38,37 @@ contract('TKOToken', function(accounts) {
             assert(true, error);
         }
     });
+
+    it('symbol', async () => {
+        assert.equal(await contract_instance.symbol(), 'TKO-T');
+    })
+
+    it('name', async () => {
+        assert.equal(await contract_instance.name(), 'TKO Test');
+    })
+
+    it('decimals', async () => {
+        assert.equal((await contract_instance.decimals()).toString(), '18');
+    })
+
+    it('total supply', async () => {
+        assert.equal((await contract_instance.totalSupply()).toString(), '1000');
+    })
+
+    it('balance', async () => {
+        assert.equal((await contract_instance.balanceOf(alice)).toString(), '1000');
+    })
+
+    it('allowance', async () => {
+        var owner = await contract_instance.owner.call();
+        let allowance = await contract_instance.allowance(owner, alice);
+        assert.exists(allowance)
+    })
+
+    it('approve', async () => {
+        let approve = await contract_instance.approve(alice, '1000');
+        assert.isTrue(approve.receipt.status)
+    })
   
 });
 
