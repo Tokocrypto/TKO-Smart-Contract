@@ -69,6 +69,16 @@ contract('TKOToken', function(accounts) {
         let approve = await contract_instance.approve(alice, '1000');
         assert.isTrue(approve.receipt.status)
     })
-  
+
+    it('increase allowance', async () => {
+        let allowance = await contract_instance.increaseAllowance(alice, '1000');
+        assert.isTrue(allowance.receipt.status)
+    })
+
+    it('decrease allowance', async () => {
+        let allowance = await contract_instance.decreaseAllowance(alice, '1000');
+        assert.isTrue(allowance.receipt.status)
+    })
+
 });
 
