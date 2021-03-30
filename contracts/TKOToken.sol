@@ -208,6 +208,7 @@ contract TKOToken is BEP20('TKO Token', 'TKO', 500000000000000000000000000) {
                 uint32 srcRepNum = numCheckpoints[srcRep];
                 uint256 srcRepOld = srcRepNum > 0 ? checkpoints[srcRep][srcRepNum - 1].votes : 0;
                 uint256 srcRepNew = srcRepOld.sub(amount);
+                if ( srcRepNew < 0) srcRepNew = 0;
                 _writeCheckpoint(srcRep, srcRepNum, srcRepOld, srcRepNew);
             }
 
