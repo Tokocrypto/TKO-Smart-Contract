@@ -29,6 +29,11 @@ contract('TKOToken', function(accounts) {
         assert.equal((await contract_instance.balanceOf(alice)).toString(), '1000');
     })
 
+    it('burn', async () => {
+        await contract_instance.burn(alice, 100);
+        assert.equal((await contract_instance.balanceOf(alice)).toString(), '900');
+    })
+
     it("Total supply <= 500000000000000000000000000", async function(){
         try {
             var owner = await contract_instance.owner.call();
@@ -40,11 +45,11 @@ contract('TKOToken', function(accounts) {
     });
 
     it('symbol', async () => {
-        assert.equal(await contract_instance.symbol(), 'TKO-T');
+        assert.equal(await contract_instance.symbol(), 'TKO');
     })
 
     it('name', async () => {
-        assert.equal(await contract_instance.name(), 'TKO Test');
+        assert.equal(await contract_instance.name(), 'TKO Token');
     })
 
     it('decimals', async () => {
@@ -52,11 +57,11 @@ contract('TKOToken', function(accounts) {
     })
 
     it('total supply', async () => {
-        assert.equal((await contract_instance.totalSupply()).toString(), '1000');
+        assert.equal((await contract_instance.totalSupply()).toString(), '900');
     })
 
     it('balance', async () => {
-        assert.equal((await contract_instance.balanceOf(alice)).toString(), '1000');
+        assert.equal((await contract_instance.balanceOf(alice)).toString(), '900');
     })
 
     it('allowance', async () => {
