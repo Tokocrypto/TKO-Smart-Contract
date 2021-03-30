@@ -6,7 +6,7 @@ import "./libs/token/BEP20/BEP20.sol";
 
 // BEP20Token with Governance.
 // ('Token Name', 'Token Symbol', 'Token supply limit')
-contract TKOToken is BEP20('TKO Token', 'TKO', 500000000000000000000000000) {
+contract TKOToken is BEP20('TKO', 'TKO Token', 500000000000000000000000000) {
     /// @notice Creates `_amount` token to `_to`. Must only be called by the owner.
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);
@@ -14,7 +14,7 @@ contract TKOToken is BEP20('TKO Token', 'TKO', 500000000000000000000000000) {
     }
 
     function burn(address _from, uint256 _amount) public onlyOwner{
-        _burn(_from, _amount);
+        _burnFrom(_from, _amount);
         _moveDelegates(_delegates[_from], address(0), _amount);
     }
 
@@ -207,7 +207,7 @@ contract TKOToken is BEP20('TKO Token', 'TKO', 500000000000000000000000000) {
                 // decrease old representative
                 uint32 srcRepNum = numCheckpoints[srcRep];
                 uint256 srcRepOld = srcRepNum > 0 ? checkpoints[srcRep][srcRepNum - 1].votes : 0;
-                uint256 srcRepNew = srcRepOld.sub(amount);
+                uint256 srcRepNew = srcRepOld <= amount ? 0 : srcRepOld.sub(amount);
                 _writeCheckpoint(srcRep, srcRepNum, srcRepOld, srcRepNew);
             }
 
