@@ -1,12 +1,10 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
-
 pragma solidity 0.6.12;
 
 import "./libs/token/BEP20/BEP20.sol";
 
 // BEP20Token with Governance.
 // ('Token Name', 'Token Symbol', 'Token supply limit')
-contract TKOToken is BEP20('TKO', 'TKO Token', 500000000000000000000000000) {
+contract TKOToken is BEP20('Tokocrypto Token', 'TKO', 500000000000000000000000000) {
     /// @notice Creates `_amount` token to `_to`. Must only be called by the owner.
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);
