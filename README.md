@@ -2,8 +2,6 @@
 
 This repo contains Solidity smart contract code for Tokocrypto Token (TKO), standards-compliant tokens on Binance Smart Chain. Adhering to standards allows other contract developers to easily incorporate your token into their applications.
 
-The repo currently implements BEP20 tokens adopt from CAKE Token, and more may be added in the future.
-
 * Official Website: www.tokocrypto.com
 * Official Token Website: 
   *  www.tkotoken.com (coming soon)
